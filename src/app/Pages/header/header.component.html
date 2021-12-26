@@ -1,0 +1,26 @@
+<div class="row">
+    <form #listForm="ngForm" class="d-flex w-100" (ngSubmit)="createList(listForm)">
+        <div class="col-md-3">
+            <input ngModel type="text" class="input" name="description" placeholder="Enter Description" />
+        </div>
+        <div class="col-md-3">
+            <select ngModel name="project" class="input select">
+                <option value="" selected disabled>Select your Project</option>
+                <option value="Project1">Project 1</option>
+                <option value="Project2">Project 2</option>
+            </select>
+        </div>
+
+        <div class="col-md-5">
+            <app-date-picker (newEndDateEvent)="endDatePicker($event)" (newStartDateEvent)="datePicker($event)"></app-date-picker>
+        </div>
+       
+        <div class="col-md-1">
+            <div class="d-flex  justify-content-center align-items-center">
+                <button type="submit" class="btn-sm button_view  pointer btn-primary">submit</button>
+            </div>
+
+        </div>
+    </form>
+
+</div>

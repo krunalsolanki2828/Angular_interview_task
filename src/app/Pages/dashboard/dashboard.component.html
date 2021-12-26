@@ -1,0 +1,288 @@
+<div class="container">
+	<div class="row">
+		<div class="bg-white header">
+			<app-header (newListEvent)="loadList($event)"></app-header>
+		</div>
+	</div>
+
+</div>
+
+
+<div *ngIf="lists" class="main-container">
+
+	<h4>Yesterday</h4>
+	<div class="section">
+
+		<div class="header-row">
+			<span class="desc">Description</span>
+			<span class="project-name">Project Name</span>
+			<span class="duration">Duration</span>
+			<span class="action">Action</span>
+		</div>
+
+		<div *ngIf="lists.length == 0" class="d-flex justify-content-center">
+			<img src="../../assets/images/blank.gif" style="width: 280px" />
+		</div>
+
+
+		<div *ngFor="let list of lists let i = index" class="records">
+			<div *ngIf="list.isYesterDay == true" class="record">
+
+				<span *ngIf="activeTab._id != list._id" class="desc">
+					<span (click)="activeTab = list">
+						{{list.description}}
+					</span>
+				</span>
+
+				<span *ngIf="activeTab._id == list._id" class="desc">
+					<input type="text" #updateValue value="{{ list.description }}" class="input" />
+					<button (click)="updateDescription(list, updateValue.value)" class="check-button btn-sm bg-primary btn mt-1 ">
+						<i class="fa fa-check" aria-hidden="true"></i>
+					</button>
+				</span>
+
+				<span *ngIf="activeTab._id != list._id" class="project-name">
+					<span (click)="activeTab = list">
+						{{list.project}}
+					</span>
+				</span>
+
+				<span class="project-name" *ngIf="activeTab._id == list._id">
+					<select (change)="dropdownList(updateOption.value)" value="{{ list.project }}" #updateOption name="project"
+						class="input select">
+						<option value="">Select your Project</option>
+						<option value="Project1">Project 1</option>
+						<option value="Project2">Project 2</option>
+					</select>
+				</span>
+
+				<span class="duration">{{list.days}}</span>
+
+				<div class="action">
+					<button (click)="onDelete(list)">
+						<i class="fa fa-trash-o" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<h4 class="today-text">Today</h4>
+	<div class="section">
+		<div class="header-row">
+			<span class="desc">Description</span>
+			<span class="project-name">Project Name</span>
+			<span class="duration">Duration</span>
+			<span class="action">Action</span>
+		</div>
+
+		<div *ngIf="lists.length == 0" class="d-flex justify-content-center">
+			<img src="../../assets/images/blank.gif" style="width: 280px" />
+		</div>
+
+
+		<div class="records" *ngFor="let list of lists let i = index">
+			<div *ngIf="list.isYesterDay == false" class="record">
+
+				<span *ngIf="activeTab._id != list._id" class="desc">
+					<span (click)="activeTab = list">
+						{{list.description}}
+					</span>
+				</span>
+
+				<span *ngIf="activeTab._id == list._id" class="desc">
+					<input type="text" #updateValue value="{{ list.description }}" class="input" />
+					<button (click)="updateDescription(list, updateValue.value)" class="check-button btn-sm bg-primary btn mt-1">
+						<i class="fa fa-check" aria-hidden="true"></i>
+					</button>
+				</span>
+
+				<span *ngIf="activeTab._id != list._id" class="project-name">
+					<span (click)="activeTab = list">
+						{{list.project}}
+					</span>
+				</span>
+
+				<span class="project-name" *ngIf="activeTab._id == list._id">
+					<select (change)="dropdownList(updateOption.value)" value="{{ list.project }}" #updateOption name="project"
+						class="input select">
+						<option value="">Select your Project</option>
+						<option value="Project1">Project 1</option>
+						<option value="Project2">Project 2</option>
+					</select>
+				</span>
+
+				<span class="duration">{{list.days}}</span>
+
+				<div class="action">
+					<button (click)="onDelete(list)">
+						<i class="fa fa-trash-o" aria-hidden="true"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="container">
+	<div class="row">
+		<div class="bg-white header">
+			<app-header (newListEvent)="loadList($event)"></app-header>
+		</div>
+	</div>
+
+
+	<div *ngIf="lists" class="row mt-5">
+
+		<div class="card col-md-12">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Description</th>
+								<th>Project</th>
+								<th>Duration</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+
+
+						<tbody>
+							<tr *ngIf="lists.length == 0">
+								<td colspan="6">
+									<div class="d-flex justify-content-center">
+										<img src="../../assets/images/blank.gif" style="width: 280px" />
+									</div>
+								</td>
+							</tr>
+
+
+							<tr *ngFor="let list of lists let i = index">
+								<div *ngIf="list.isYesterDay == false">
+									<td *ngIf="activeTab._id != list._id" class="col-md-4">
+										<span (click)="activeTab = list">
+											{{ list.description }}
+										</span>
+									</td>
+
+									<td *ngIf="activeTab._id == list._id" class="col-md-4">
+										<span>
+											<input type="text" #updateValue value="{{ list.description }}" class="input" />
+											<button (click)="updateDescription(list, updateValue.value)" class="btn-sm bg-primary btn_right">
+												<i class="fa fa-check" aria-hidden="true"></i>
+											</button>
+										</span>
+									</td>
+
+									<td *ngIf="activeTab._id != list._id" class="pointer col-md-4">
+										<span (click)="activeTab = list">
+											{{ list.project }}
+										</span>
+									</td>
+
+									<td *ngIf="activeTab._id == list._id" class="col-md-4">
+										<select (change)="dropdownList(updateOption.value)" value="{{ list.project }}" #updateOption
+											name="project" class="input select">
+											<option value="">Select your Project</option>
+											<option value="Project1">Project 1</option>
+											<option value="Project2">Project 2</option>
+										</select>
+									</td>
+
+									<td class="col-md-4">{{ list.days }}</td>
+									<td class="col-md-4">
+										<button (click)="onDelete(list)" class="btn-sm bg-danger text-white button_view">
+											<i class="fa fa-trash-o" aria-hidden="true"></i>
+										</button>
+									</td>
+								</div>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+		<div class="card-body">
+			<div class="card">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Description</th>
+									<th>Project</th>
+									<th>Duration</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngIf="lists.length == 0">
+									<td colspan="6">
+										<div class="d-flex justify-content-center">
+											<img src="../../assets/images/blank.gif" style="width: 280px" />
+										</div>
+									</td>
+								</tr>
+
+								<span>YesterDay</span>
+								<tr *ngFor="let list of lists; let i = index">
+									<div *ngIf="list.isYesterDay">
+										<td>{{ i + 1 }}</td>
+
+										<td *ngIf="activeTab._id != list._id" class="pointer">
+											<span (click)="activeTab = list">
+												{{ list.description }}
+											</span>
+										</td>
+										<td *ngIf="activeTab._id == list._id">
+											<span>
+												<input type="text" #updateValue value="{{ list.description }}" class="input" />
+												<button (click)="updateDescription(list, updateValue.value)"
+													class="btn-sm bg-primary btn_right">
+													<i class="fa fa-check" aria-hidden="true"></i>
+												</button>
+											</span>
+										</td>
+
+										<td *ngIf="activeTab._id != list._id" class="pointer">
+											<span (click)="activeTab = list">
+												{{ list.project }}
+											</span>
+										</td>
+
+										<td *ngIf="activeTab._id == list._id">
+											<select (change)="dropdownList(updateOption.value)" value="{{ list.project }}" #updateOption
+												name="project" class="input select">
+												<option value="">Select your Project</option>
+												<option value="Project1">Project 1</option>
+												<option value="Project2">Project 2</option>
+											</select>
+										</td>
+
+										<td>{{ list.days }}</td>
+										<td>
+											<button (click)="onDelete(list)" class="btn-sm bg-danger text-white button_view">
+												<i class="fa fa-trash-o" aria-hidden="true"></i>
+											</button>
+										</td>
+									</div>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div> -->

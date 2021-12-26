@@ -1,0 +1,22 @@
+<div class="main_container">
+    <div class="container">
+      <form #loginForm="ngForm" (ngSubmit)="createLogin(loginForm)">
+        <div class="title">Login</div>
+        <div class="input-box underline">
+          <input #email="ngModel" name="email" ngModel required type="email" placeholder="Enter Your Email" />
+          <span *ngIf="email.touched && email.invalid" class="d-block error_message text-danger fs-6"> Please enter Email</span>
+          <div class="underline"></div>
+        </div>
+        <div class="input-box underline">
+          <input  #password="ngModel" ngModel name="password" required type="password"
+            placeholder="Enter Your Password" />
+          <span *ngIf="password.touched && password.invalid" class="d-block error_message text-danger fs-6"> Please enter
+            password</span>
+          <div class="underline"></div>
+        </div>
+        <div class="button">
+          <button id="login" type="submit" class="input-box">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>

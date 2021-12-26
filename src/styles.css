@@ -1,0 +1,13 @@
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+body{
+    background-color:#edf1f5!important;
+    font-family: 'Nunito' !important;
+}
+.button_view{
+    border:none;
+    outline:none;
+}
+.pointer{
+    cursor:pointer;
+}

@@ -1,0 +1,119 @@
+.header {
+  width: 100%;
+  padding: 10px;
+}
+
+.input {
+  outline: none;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid rgb(231, 226, 226);
+}
+
+.main-container {
+  min-height: 100vh;
+  padding: 30px 10vw;
+}
+
+.section {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 1px 5px 2px lightgray;
+}
+
+h4{
+  margin-left: 15px;
+}
+
+.today-text{
+  margin-top: 50px;
+}
+
+.header-row {
+  display: flex;
+  flex-direction: row;
+  padding-inline: 30px;
+  padding-top: 15px;
+}
+
+.header-row .desc {
+  flex: 2;
+  font-weight: bold;
+}
+
+.header-row .project-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.header-row .duration {
+  flex: 1;
+  font-weight: bold;
+}
+
+.header-row .action {
+  flex: 1;
+  font-weight: bold;
+}
+
+.records {
+  padding-inline: 30px;
+  margin-top: 25px;
+}
+
+.record {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 0;
+  cursor: pointer;
+  margin: 8px 0;
+  position: relative;
+}
+
+.record:hover {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.records .desc {
+  flex: 2;
+}
+
+.record .desc button{
+  position: absolute;
+  right: 0;
+}
+
+.records .project-name {
+  flex: 1;
+}
+
+.records .duration {
+  flex: 1;
+}
+
+.records .action {
+  flex: 1;
+}
+
+.action button {
+  background-color: red;
+  color: #fff;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.check-button{
+  background-color: blue;
+  color: white;
+}
+.header{
+  padding-top: 23px;
+}
+
+hr {
+  margin: 0;
+}
